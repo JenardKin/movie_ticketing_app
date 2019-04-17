@@ -1,0 +1,31 @@
+.content {
+    background: #222
+}
+
+.alertError {
+    .alert-title {
+        color: red; 
+    }    
+    button {
+        color: red !important;
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+        mask-size: contain;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+        width: 1em;
+        height: 1em;
+    }
+
+    &[class*="custom-seat"] {
+        mask-image: url(../assets/seat.svg);
+    }
+
+    &[class*="custom-hourglass"] {
+        mask-image: url(../assets/hourglass.svg);
+    }
+}

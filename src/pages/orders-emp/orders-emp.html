@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Orders</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding overflow-scroll="false">
+  <button ion-button block outline icon-start color="light" *ngIf="!showLocations" (click)="changeLocation()">
+    <ion-icon name="locate"></ion-icon>
+    Change Location
+  </button>
+  <h4 text-wrap *ngIf="locationName && !showLocations" style="color: #f4f4f4; text-align: center;"><b >Orders at {{locationName}}</b></h4>
+  
+  <ion-list *ngIf="showLocations">
+    <h3 style="color:#f4f4f4; text-align: center;">Select your location</h3>
+    <button ion-button block outline color="light" *ngFor="let location of locations | async" (click)="selectLocation(location)" text-wrap>
+      {{location.name}}
+    </button>
+  </ion-list>
+
+  <ion-list *ngIf="!showLocations">
+    <ion-card *ngFor="let order of orders | async" text-wrap>
+      <ion-card-header>
+        Ordered By: {{order.customerName}}<br>
+        Ordered On: {{order.orderedOn | timeUnix:'hh:mma, MMM DD'}}<br>
+        Total: {{order.totalPrice | currency:'CAD':'1.2-2'}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row nowrap *ngFor="let item of order.items" justify-content-center class="middle">
+          <ion-col>{{item.name}}</ion-col>
+          <ion-col>QTY: {{item.quantity}}</ion-col>
+        </ion-row>  
+        <button ion-button outline block outline color="drkRed" *ngIf="order.status == 1" (click)="prepared(order)">Finished Preparing</button>
+        <p *ngIf="order.status == 0">Waiting for customer to specify when they want the order to be prepared.</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>  
+
+  <br><br>
+</ion-content>

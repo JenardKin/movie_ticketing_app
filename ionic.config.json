@@ -1,0 +1,7 @@
+{
+  "name": "Cinexpress",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

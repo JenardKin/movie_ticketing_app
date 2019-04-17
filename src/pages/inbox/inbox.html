@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title>Inbox</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding overflow-scroll="false">
+
+  <ion-list *ngFor="let message of messages | async">
+    <ion-card (click)="messageClick(message)">
+      <ion-card-header>{{message.title}}</ion-card-header>
+      <ion-card-content>
+        {{message.date | timeUnix: 'h:mma - MMM D'}}<br>
+        {{message.message}}
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <br><br>
+</ion-content>

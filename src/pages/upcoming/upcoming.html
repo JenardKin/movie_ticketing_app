@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="light">
+    <ion-title><b>Coming Soon</b></ion-title>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding>
+  <ion-searchbar padding [(ngModel)]="searchText" [showCancelButton]="showCancel" [animated]="animate" [autocorrect]="correct"
+    [spellcheck]="spell" [debounce]="bounce" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)" 
+    class="search" color="light">
+  </ion-searchbar>
+
+  <ion-fab middle right #fab>
+    <button ion-fab mini color="primary"><ion-icon name="md-funnel"></ion-icon></button>
+    <ion-fab-list side="down">
+      <button ion-fab color="primary2" (click)="sort(0, fab)"><ion-icon name="videocam"></ion-icon></button>
+      <button ion-fab color="drkRed" (click)="sort(1, fab)"><ion-icon name="stopwatch"></ion-icon></button>
+      <button ion-fab color="drkGrey" (click)="sort(2, fab)"><ion-icon name="md-swap"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-grid>    
+
+    <ion-row *ngIf="desktop">
+      <ion-col *ngFor="let movie of filteredMovies" col-3>
+
+        <ion-card (click)="movieClick(movie.imdbID)" style="cursor: auto;">
+          <ion-item>
+            <h2 style="text-align: center;"><b>{{movie.Title}}</b></h2>
+          </ion-item>
+        
+          <img src="{{movie.Poster}}" style="display: block; height: 400px; cursor: pointer;">
+        
+          <ion-card-content>
+            <p style="text-align: center;">{{movie.Released | released}}</p>
+            <p style="text-align: center;">{{movie.Genre}}</p>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!desktop">
+      <ion-card *ngFor="let movie of filteredMovies" (click)="movieClick(movie.imdbID)" style="cursor: auto;">
+        <ion-item>
+          <h2 text-wrap style="text-align: center;"><b>{{movie.Title}}</b></h2>
+        </ion-item>
+      
+        <img src="{{movie.Poster}}" style="display: block; height: 350px; cursor: pointer;">
+      
+        <ion-card-content>
+          <p text-wrap style="text-align: center;">{{movie.Released | released}}</p>
+          <p text-wrap style="text-align: center;">{{movie.Genre}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+  </ion-grid>
+  
+</ion-content>
