@@ -1,8 +1,8 @@
 {
   "name": "Cinexpress",
   "version": "1.0.0",
-  "author": "Satyaki Ghosh",
-  "homepage": "https://cinexpress.ghosh.xyz",
+  "author": "Jenard Cabia",
+  "homepage": "https://cpsc471-6d9c6.firebaseapp.com/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

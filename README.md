@@ -1,8 +1,8 @@
 # CPSC 471 Final Project (Winter 2018)
-By: Satyaki Ghosh
+By: Jenard Cabia
 
 ## [Demo](https://cpsc471-6d9c6.firebaseapp.com)
-    https://cinexpress.ghosh.xyz
+    https://cpsc471-6d9c6.firebaseapp.com/
 
 #### The entire database for our project can be found in the file titled 'Database.json'. The database is in JSON format and can only be used for NoSQL databases.
 
